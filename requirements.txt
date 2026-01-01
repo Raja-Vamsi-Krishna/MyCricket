@@ -1,0 +1,13 @@
+# Wikipedia crawling
+wikipedia-api==0.6.0
+
+# PDF ingestion (ICC laws)
+pypdf==4.2.0
+
+# YAML parsing (Cricsheet)
+pyyaml==6.0.1
+
+# Progress bars (optional but recommended for large datasets)
+tqdm==4.66.2
+
+torch

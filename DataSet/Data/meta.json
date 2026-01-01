@@ -1,0 +1,5 @@
+{
+  "vocab_size": 50001,
+  "dtype": "<class 'numpy.uint16'>",
+  "eos_token_id": 50000
+}
