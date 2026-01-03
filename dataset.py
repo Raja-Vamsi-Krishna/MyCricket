@@ -3,13 +3,18 @@ import json
 import torch
 from config import GPTConfig
 
-with open("DataSet/Data/meta.json") as f:
+#for cricket
+# with open("DataSet/Data/meta.json") as f:
+#     meta = json.load(f)
+with open("DataSet/Data/novels/meta.json") as f:
     meta = json.load(f)
-
 dtype = np.uint16 if "uint16" in meta["dtype"] else np.uint32
 
-train_data = np.memmap("DataSet/Data/train.bin", dtype=dtype, mode="r")
-val_data   = np.memmap("DataSet/Data/val.bin", dtype=dtype, mode="r")
+# train_data = np.memmap("DataSet/Data/train.bin", dtype=dtype, mode="r")
+# val_data   = np.memmap("DataSet/Data/val.bin", dtype=dtype, mode="r")
+
+train_data = np.memmap("DataSet/Data/novels/train.bin", dtype=dtype, mode="r")
+val_data   = np.memmap("DataSet/Data/novels/val.bin", dtype=dtype, mode="r")
 
 EOS = 50256
 
