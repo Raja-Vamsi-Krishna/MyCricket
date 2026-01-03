@@ -28,8 +28,8 @@ class GPTConfig:
     dropout: float = 0.1
 
     # training
-    max_iters: int = 2500      
-    eval_interval: int = 200
+    max_iters: int = 8000      
+    eval_interval: int = 500
     eval_iters: int = 50
 
     learning_rate: float = 3e-4

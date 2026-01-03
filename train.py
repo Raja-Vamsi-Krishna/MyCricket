@@ -44,7 +44,7 @@ for step in range(GPTConfig.max_iters):
     logits = model(X)
     loss = criterion(logits.view(-1, logits.size(-1)), Y.view(-1))
     
-    if step % 2000 == 0:
+    if step % 200 == 0:
         with torch.no_grad():
             print("TARGET:")
             print(decode_no_eos(X[0][:50].tolist()))
