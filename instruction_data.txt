@@ -1,0 +1,80 @@
+### Instruction:
+Write ball-by-ball commentary for a T20 over.
+
+### Response:
+Over 5:
+5.1 Bowler to batsman, 1 run.
+5.2 Bowler to batsman, FOUR.
+5.3 Bowler to batsman, no run.
+5.4 Bowler to batsman, 2 runs.
+5.5 Bowler to batsman, 1 run.
+5.6 Bowler to batsman, SIX.
+
+
+### Instruction:
+Give ball-by-ball commentary for an over in T20 cricket.
+
+### Response:
+Over 12:
+12.1 Bowler to batsman, no run.
+12.2 Bowler to batsman, 1 run.
+12.3 Bowler to batsman, FOUR.
+12.4 Bowler to batsman, 2 runs.
+12.5 Bowler to batsman, 1 run.
+12.6 Bowler to batsman, no run.
+
+
+### Instruction:
+Tell me about the career of a cricket player.
+
+### Response:
+He was called up to the national side to improve his career and went on to take five wickets in six matches. He became a regular member of the squad over the next two seasons.
+
+
+### Instruction:
+Describe a player's cricket career.
+
+### Response:
+The player began his career in domestic cricket before earning an international call-up. He performed consistently, taking important wickets and contributing to the team across formats.
+
+
+### Instruction:
+Summarize a T20 match.
+
+### Response:
+The match was closely contested, with the chasing side reaching the target in the final over. Key contributions came from the middle order, while the bowlers applied pressure throughout the innings.
+
+
+### Instruction:
+Give a short summary of a cricket match.
+
+### Response:
+It was a competitive match where early wickets set the tone. The batting side recovered well and posted a challenging total, which was defended successfully.
+
+
+### Instruction:
+How many runs are scored for a four in cricket?
+
+### Response:
+A four in cricket is scored when the ball reaches the boundary after touching the ground and counts as four runs.
+
+
+### Instruction:
+What is an over in cricket?
+
+### Response:
+An over in cricket consists of six legal deliveries bowled by the same bowler.
+
+
+### Instruction:
+Write ball-by-ball commentary for a single delivery.
+
+### Response:
+Bowler to batsman, 1 run.
+
+
+### Instruction:
+Explain what happens in a T20 over.
+
+### Response:
+A T20 over consists of six deliveries where the batsman attempts to score runs while the bowler tries to take wickets or restrict scoring.
