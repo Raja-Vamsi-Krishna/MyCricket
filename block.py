@@ -12,9 +12,9 @@ class TransformerBlock(nn.Module):
         self.attn = CasualMultiHeadAttention(config)
         self.ffn = FeedForward(config)
 
-    def forward(self, x , past_kv=None):
-        attn_out, new_kv = self.attn(self.ln1(x), past_kv)
-        x = x + attn_out
+    def forward(self, x):
+       
+        x = x + self.attn(self.ln1(x))
         x = x + self.ffn(self.ln2(x))
-        return x, new_kv
+        return x
         

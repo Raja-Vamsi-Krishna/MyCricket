@@ -44,14 +44,14 @@ class CasualMultiHeadAttention(nn.Module):
         attn_scores = queries @ keys.transpose(-2, -1) / math.sqrt(self.head_dim)#dot product -> shape:(batch_size , no_of_heads , head_dimension , head_dimension)
         # attn_scores = attn_scores.masked_fill(self.mask[:no_of_tokens, :no_of_tokens] == 0, float("-inf"))
         
-        Tq = queries.size(2)
-        Tk = keys.size(2)   
+        # Tq = queries.size(2)
+        # Tk = keys.size(2)   
 
-        mask = torch.tril(torch.ones(Tq, Tk, device=x.device))
-        attn_scores = attn_scores.masked_fill(mask == 0, float("-inf"))
+        # mask = torch.tril(torch.ones(:no_of_tokens, :no_of_tokens, device=x.device))
+        attn_scores = attn_scores.masked_fill(self.mask[:no_of_tokens,:no_of_tokens] ==0, float("-inf"))
         attn_scores = torch.softmax(attn_scores, dim=-1)
         attn_scores = self.dropout(attn_scores)
 
         out = attn_scores @ values
         out = out.transpose(1, 2).contiguous().view(batch_size,no_of_tokens,input_dimension)
-        return self.proj(out),(keys,values)
+        return self.proj(out)
