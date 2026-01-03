@@ -34,7 +34,7 @@ def get_batch():
 # Load model (FROM BASE LM)
 # -----------------------------
 model = MyLLM(GPTConfig()).to(device)
-model.load_state_dict(torch.load("checkpoints/latest.pt", map_location=device))
+model.load_state_dict(torch.load("checkpoints/ckpt_006000.pt", map_location=device))
 model.train()
 
 optimizer = torch.optim.AdamW(
