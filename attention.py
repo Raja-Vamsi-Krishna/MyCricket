@@ -47,10 +47,8 @@ class CasualMultiHeadAttention(nn.Module):
         Tq = queries.size(2)
         Tk = keys.size(2)   
 
-        attn_scores = attn_scores.masked_fill(
-            self.mask[:Tq, :Tk] == 0,
-            float("-inf")
-        )
+        mask = torch.tril(torch.ones(Tq, Tk, device=x.device))
+        attn_scores = attn_scores.masked_fill(mask == 0, float("-inf"))
         attn_scores = torch.softmax(attn_scores, dim=-1)
         attn_scores = self.dropout(attn_scores)
 

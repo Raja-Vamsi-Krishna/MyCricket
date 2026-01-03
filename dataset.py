@@ -11,6 +11,7 @@ dtype = np.uint16 if "uint16" in meta["dtype"] else np.uint32
 train_data = np.memmap("DataSet/Data/train.bin", dtype=dtype, mode="r")
 val_data   = np.memmap("DataSet/Data/value.bin", dtype=dtype, mode="r")
 
+
 print("Train tokens:", len(train_data))
 print("Val tokens:", len(val_data))
 

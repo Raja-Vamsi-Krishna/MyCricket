@@ -3,7 +3,7 @@ from dataclasses import dataclass
 @dataclass
 class GPTConfig:
     batch_size:int=64
-    vocab_size: int=50001
+    vocab_size: int=50257
     block_size: int=256 #Context Length
     n_layers: int = 4
     n_heads: int = 4    

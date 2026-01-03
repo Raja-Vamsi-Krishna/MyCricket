@@ -20,19 +20,19 @@ class MyLLM(nn.Module):
 
         self.block_size = config.block_size
 
-    def forward(self, idx , kv_cache=None):
+    def forward(self, idx , kv_cache=None,start_pos=0):
         batch_size,no_of_tokens= idx.shape
         assert no_of_tokens <= self.block_size
 
-        pos = torch.arange(0, no_of_tokens, device=idx.device).unsqueeze(0)
-
+        pos = torch.arange(start_pos, start_pos+no_of_tokens, device=idx.device) % self.block_size
+        pos=pos.unsqueeze(0)
         x = self.token_emb(idx) + self.pos_emb(pos)
         x = self.drop(x)
 
         new_cache=[]
 
         for i, block in enumerate(self.blocks):
-            past_kv = None if kv_cache is None else kv_cache[i]
+            past_kv = None if kv_cache is None else kv_cache.get(i)
             x, kv = block(x, past_kv)
             new_cache.append(kv)
 

@@ -3,6 +3,7 @@ from pathlib import Path
 from tqdm import tqdm
 import numpy as np
 from BPE.bpe_encoder import BPETokenizer
+import tiktoken
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 VOCAB_PATH = BASE_DIR / "BPE" / "bpe_vocab.json"
@@ -13,9 +14,11 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 TRAIN_RATIO=0.9
 DTYPE=np.uint16
 
-tokenizer=BPETokenizer.load(VOCAB_PATH,MERGES_PATH)
-vocab_size=tokenizer.vocab_size
+tokenizer = tiktoken.get_encoding("gpt2")
 
+# tokenizer=BPETokenizer.load(VOCAB_PATH,MERGES_PATH)
+vocab_size=tokenizer.n_vocab
+print(vocab_size)
 all_tokens=[]
 
 with open(CORPUS_PATH,"r",encoding="utf-8") as f:
@@ -23,7 +26,9 @@ with open(CORPUS_PATH,"r",encoding="utf-8") as f:
         line=line.strip()
         if not line:
             continue
-        ids=tokenizer.encode(line,add_eos=True)
+        ids=tokenizer.encode(line)
+        ids.append(tokenizer.eot_token)
+
         all_tokens.extend(ids)
 
 print(f"Total tokens: {len(all_tokens)}")
@@ -36,9 +41,9 @@ train_idx.tofile(OUTPUT_DIR / "train.bin")
 value_idx.tofile(OUTPUT_DIR / "value.bin")
 
 meta = {
-    "vocab_size": tokenizer.vocab_size,
+    "vocab_size": tokenizer.n_vocab,
     "dtype": str(DTYPE),
-    "eos_token_id": tokenizer.eos_token_id,
+    "eos_token_id": tokenizer.eot_token,
 }
 
 with open(OUTPUT_DIR / "meta.json", "w") as f:
