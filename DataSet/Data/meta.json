@@ -1,5 +1,6 @@
 {
   "vocab_size": 50257,
   "dtype": "<class 'numpy.uint16'>",
-  "eos_token_id": 50256
+  "eos_token_id": 50256,
+  "tokenizer": "tiktoken_gpt2"
 }
