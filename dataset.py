@@ -11,6 +11,10 @@ dtype = np.uint16 if "uint16" in meta["dtype"] else np.uint32
 train_data = np.memmap("DataSet/Data/train.bin", dtype=dtype, mode="r")
 val_data   = np.memmap("DataSet/Data/val.bin", dtype=dtype, mode="r")
 
+EOS = 50256
+
+print("Max token:", train_data.max())
+print("EOS count:", (train_data == EOS).sum())
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 def get_batch(split):

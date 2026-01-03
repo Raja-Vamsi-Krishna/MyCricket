@@ -17,6 +17,8 @@ tokenizer=tiktoken.get_encoding("gpt2")
 
 criterion = nn.CrossEntropyLoss()
 os.makedirs("checkpoints", exist_ok=True)
+def decode_no_eos(ids):
+    return tokenizer.decode([i for i in ids if i != tokenizer.eot_token])
 
 @torch.no_grad()
 def estimate_loss():
@@ -44,11 +46,11 @@ for step in range(GPTConfig.max_iters):
     
     if step % 2000 == 0:
         with torch.no_grad():
-            print("\n🔍 SANITY CHECK")
             print("TARGET:")
-            print(tokenizer.decode(X[0][:50].tolist()))
+            print(decode_no_eos(X[0][:50].tolist()))
+
             print("PREDICTION:")
-            print(tokenizer.decode(torch.argmax(logits[0], dim=-1)[:50].tolist()))
+            print(decode_no_eos(torch.argmax(logits[0], dim=-1)[:50].tolist()))
             print("-" * 40)
     optimizer.zero_grad(set_to_none=True)
     loss.backward()
