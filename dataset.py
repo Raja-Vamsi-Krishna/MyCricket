@@ -16,6 +16,6 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 def get_batch(split):
     data = train_data if split == "train" else val_data
     ix = torch.randint(0, len(data) - GPTConfig.block_size - 1, (GPTConfig.batch_size,))
-    x = torch.stack([torch.from_numpy(data[i:i+GPTConfig.block_size]) for i in ix])
-    y = torch.stack([torch.from_numpy(data[i+1:i+GPTConfig.block_size+1]) for i in ix])
+    x = torch.stack([torch.from_numpy(data[i:i+GPTConfig.block_size].copy()).long() for i in ix])
+    y = torch.stack([torch.from_numpy(data[i+1:i+GPTConfig.block_size+1].copy()).long() for i in ix])
     return x.to(device), y.to(device)
